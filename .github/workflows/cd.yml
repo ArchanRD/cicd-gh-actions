@@ -9,8 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Re Deploy app to dev
     steps:
-      name: SSH into server
-      run: |
+      - run: |
           echo ${{ secrets.TEST_SSH_PRIVATE}} &> ~/ssh_key
           chmod 700 ~/ssh_key
           ssh -i ~/ssh_key ubuntu@13.203.193.91
