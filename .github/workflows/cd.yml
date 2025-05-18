@@ -2,7 +2,7 @@ name: Deploy to dev
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   re_deploy_app:
@@ -16,5 +16,4 @@ jobs:
           echo "${{ secrets.KNOWN_HOSTS}}" &> ~/.ssh/known_hosts
           touch ~/.ssh/known_hosts
           chmod 700 ~/ssh_key
-          ssh -i ~/ssh_key ubuntu@13.203.193.91 -t "cd /home/ubuntu/cicd-gh-actions && git pull && npm install && npm run build && pm2 restart "next app"
-         
+          ssh -i ~/ssh_key ubuntu@13.203.193.91 -t "cd /home/ubuntu/cicd-gh-actions && git pull && npm install && npm run build && pm2 restart 'next app'"
