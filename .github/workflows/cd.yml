@@ -10,7 +10,7 @@ jobs:
     name: Re Deploy app to dev
     steps:
       - run: |
-          echo ${{ secrets.TEST_SSH_PRIVATE}} &> ~/ssh_key
+          echo "${{ secrets.TEST_SSH_PRIVATE}}" &> ~/ssh_key
           chmod 700 ~/ssh_key
           ssh -i ~/ssh_key ubuntu@13.203.193.91
           cd /home/ubuntu/cicd-gh-actions && git pull
