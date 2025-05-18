@@ -12,6 +12,9 @@ jobs:
       - run: |
           echo "${{ secrets.TEST_SSH_PRIVATE}}" &> ~/ssh_key
           chmod 700 ~/ssh_key
+          mkdir ~/.ssh
+          touch ~/.ssh/known_hosts
+          echo "${{ secrets.KNOWN_HOSTS}}" &> ~/.ssh/known_hosts
           ssh -i ~/ssh_key ubuntu@13.203.193.91
           cd /home/ubuntu/cicd-gh-actions && git pull
           npm install
